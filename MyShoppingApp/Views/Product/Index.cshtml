@@ -1,0 +1,37 @@
+﻿@model IEnumerable<MyShoppingApp.Models.Product>;
+
+<a asp-controller="Product" asp-action="Addproduct" class="btn-outline-primary">
+    Add to products
+</a>
+
+<h1>My Products</h1>
+
+<table class="table table-bordered table-striper">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Category</td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Product" asp-action="EditProduct" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger" asp-controller="DeleteProduct" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
